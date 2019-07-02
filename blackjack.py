@@ -62,11 +62,42 @@ while True:
         else:
             while sum(dealer)<17:
                 if sum(player1)>=17:
-                    dealer.append(stack.pop())
+                    while sum(dealer)<17:
+                        dealer.append(stack.pop())
                 elif (sum(player1)==16 or sum(player1)==15 or sum(player1)==14 or sum(player1)==13) and (sum(dealer)==2 or sum(dealer)==3 or sum(dealer)==4 or sum(dealer)==5 or sum(dealer)==6):
-                    dealer.append(stack.pop())
-                else:
+                    while sum(dealer)<17:
+                        dealer.append(stack.pop())
+                elif (sum(player1)==16 or sum(player1)==15 or sum(player1)==14 or sum(player1)==13) and (sum(dealer)==7 or sum(dealer)==8 or sum(dealer)==9 or sum(dealer)==10):
                     player1.append(stack.pop())
+                elif (sum(player1)==12) and (sum(dealer)==4 or sum(dealer)==5 or sum(dealer)==6):
+                    while sum(dealer)<17:
+                        dealer.append(stack.pop())
+                elif (sum(player1)==12) and (sum(dealer)==2 or sum(dealer)==3 or sum(dealer)==7 or sum(dealer)==8 or sum(dealer)==9 or sum(dealer)==10):
+                    player1.append(stack.pop())
+                elif (sum(player1 and len(player1)==2)==11):
+                    bet=bet*2
+                    player1.append(stack.pop())
+                    while sum(dealer)<17:
+                        dealer.append(stack.pop())
+                elif (sum(player1)==10 and len(player1)==2) and (sum(dealer)!=10):
+                    bet=bet*2
+                    player1.append(stack.pop())
+                    while sum(dealer)<17:
+                        dealer.append(stack.pop())
+                elif (sum(player1)==10) and (sum(dealer)==10):
+                    player1.append(stack.pop())
+                elif (sum(player1)==9 and len(player1)==2) and (sum(dealer)==3 or sum(dealer)==4 or sum(dealer)==5 or sum(dealer)==6):
+                    bet=bet*2
+                    player1.append(stack.pop())
+                    while sum(dealer)<17:
+                        dealer.append(stack.pop())
+                elif (sum(player1)==9) and (sum(dealer)!=3 or sum(dealer)!=4 or sum(dealer)!=5 or sum(dealer)!=6):
+                    player1.append(stack.pop())
+                elif (sum(player1)==5 or sum(player1)==6 or sum(player1)==7 or sum(player1)==8):
+                    player1.append(stack.pop())
+
+                else:
+                    break
 
 
 
