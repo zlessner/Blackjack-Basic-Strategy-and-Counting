@@ -29,6 +29,10 @@ bigCards = [10,J,Q,K,A]
 
 count =0
 
+minBet=5
+
+bankRoll=500
+
 deck= cards*4
 
 numDecks=8
@@ -54,6 +58,17 @@ while sum(dealer)<17:
         dealer.append(stack.pop())
     else:
         player1.append(stack.pop())
+
+if sum(player1)>21:
+    bankRoll=bankRoll-minBet
+elif sum(dealer)>21:
+    bankRoll=bankRoll+minBet
+elif sum(player1)<sum(dealer):
+    bankRoll=bankRoll-minBet
+elif sum(player1)==sum(dealer):
+    bankRoll=bankRoll
+else: 
+    bankRoll=bankRoll+minBet
         
         
 
@@ -86,6 +101,9 @@ for x in dealer:
 
 
 print (player1)
+print (sum(player1))
 print (dealer)
+print (sum(dealer))
 print (count)
+print (bankRoll)
 
