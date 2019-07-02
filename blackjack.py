@@ -13,8 +13,6 @@ bigCards = [10,J,Q,K,A]
 
 count =0
 
-minBet=5
-
 bankRoll=500
 
 deck= cards*4
@@ -31,6 +29,18 @@ while True:
 
     if play == 'y' or play == 'Y':
 
+        bet=5
+
+        if count/numDecks>=1:
+            bet= bet*2
+        elif count/numDecks>=2:
+            bet= bet*3
+        elif count/numDecks>=3:
+            bet= bet*4
+        else:
+            bet=bet
+
+
         player1=[]
 
         dealer=[]
@@ -43,22 +53,39 @@ while True:
         dealer.append(stack.pop())
 
 
-        while sum(dealer)<17:
-            if sum(player1)>=17:
-                dealer.append(stack.pop())
-            else:
-                player1.append(stack.pop())
 
-        if sum(player1)>21:
-            bankRoll=bankRoll-minBet
-        elif sum(dealer)>21:
-            bankRoll=bankRoll+minBet
-        elif sum(player1)<sum(dealer):
-            bankRoll=bankRoll-minBet
-        elif sum(player1)==sum(dealer):
-            bankRoll=bankRoll
-        else: 
-            bankRoll=bankRoll+minBet
+        if A in player1 or A in dealer:
+            print ("Ace")
+            continue
+
+
+        else:
+            while sum(dealer)<17:
+                if sum(player1)>=17:
+                    dealer.append(stack.pop())
+                elif (sum(player1)==16 or sum(player1)==15 or sum(player1)==14 or sum(player1)==13) and (sum(dealer)==2 or sum(dealer)==3 or sum(dealer)==4 or sum(dealer)==5 or sum(dealer)==6):
+                    dealer.append(stack.pop())
+                else:
+                    player1.append(stack.pop())
+
+
+
+
+
+            if sum(player1)>21:
+                bankRoll=bankRoll-bet
+            elif sum(dealer)>21:
+                bankRoll=bankRoll+bet
+            elif sum(player1)<sum(dealer):
+                bankRoll=bankRoll-bet
+            elif sum(player1)==sum(dealer):
+                bankRoll=bankRoll
+            else: 
+                bankRoll=bankRoll+bet
+
+            
+
+            
                 
                 
 
@@ -88,6 +115,10 @@ while True:
 
 
 
+        if len(stack)<=208:
+            stack= numDecks * deck
+            random.shuffle(stack)
+            count=0
 
 
         print (player1)
