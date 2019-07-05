@@ -1,13 +1,8 @@
 import random
 
-from inspect import currentframe, getframeinfo
+from inspect import currentframe
 
 cf = currentframe()
-
-J=10
-Q=10
-K=10
-A=11
 
 #display card names
 #figure out ace thing
@@ -15,12 +10,35 @@ A=11
 #finish up basic strategy
 #catch fixes in logic (such as possibly when to double down with a 9)
 #simulate many times to see if make any money over time
+#sudo code and readme
 
-cards= [2,3,4,5,6,7,8,9,10,J,Q,K,A]
+# cards= [2,3,4,5,6,7,8,9,10,J,Q,K,A]
 
-smallCards = [2,3,4,5,6]
+total=0
 
-bigCards = [10,J,Q,K,A]
+cards= [{"2":2}, {"3":3}, {"4":4}, {"5":5}, {"6":6}, {"7":7}, {"8":8}, {"9":9}, {"10":10}, {"J":10}, {"Q":10}, {"K":10}, {"A":11}]
+
+for key in cards:
+    global face
+    face = list(key.keys())
+    print (face[0])
+
+
+
+# print (cards[0].items())
+
+# show= list(cards[0].keys())
+
+# print (sum(cards[0].values()))
+
+# print (show[0])
+
+
+smallCards = [list(cards[0].keys()),list(cards[1].keys()),list(cards[2].keys()),list(cards[3].keys()),list(cards[4].keys())]
+
+bigCards = [list(cards[8].keys()),list(cards[9].keys()),list(cards[10].keys()),list(cards[11].keys()),list(cards[12].keys())]
+
+
 
 count =0
 
@@ -34,7 +52,6 @@ stack= numDecks * deck
 
 random.shuffle(stack)
 
-called=True
 
 # while True:
 for i in range(500):
@@ -65,7 +82,11 @@ for i in range(500):
 
         dealer.append(stack.pop())
 
-
+        for x in player1:
+            total= total + sum(list(x.values()))
+            
+        print (total)
+        print (player1)
 
         # if A in player1 or A in dealer:
         #     print ("Ace")
@@ -155,96 +176,8 @@ for i in range(500):
                     break
 
 
-        if called==True:      
-            basicStrag()
-
-
-
-        def splitCards():
-            global bet
-            global called
-            called=False
-            print(dealer, "line ", cf.f_lineno)
-            print(player1, "line ", cf.f_lineno)
-            while sum(dealer)<17:
-                print(player1, "line ", cf.f_lineno)
-                if (player1[0]==2 and player1[1]==2) and (sum(dealer)<=7):
-                    # player1Split1=[]
-                    player1Split1.append(player1.pop())
-                    player1.append(stack.pop())
-                    # print ("split")
-                    print(player1)
-                    # print(player1Split1)
-                elif (player1[0]==3 and player1[1]==3) and (sum(dealer)<=7):
-                    # player1Split1=[]
-                    player1Split1.append(player1.pop())
-                    player1.append(stack.pop())
-                    #print ("split")
-                elif (player1[0]==4 and player1[1]==4) and (sum(dealer)==5 or sum(dealer)==6):
-                    # player1Split1=[]
-                    player1Split1.append(player1.pop())
-                    player1.append(stack.pop())
-                    #print ("split")
-                elif (player1[0]==6 and player1[1]==6) and (sum(dealer)<=6):
-                    # player1Split1=[]
-                    player1Split1.append(player1.pop())
-                    player1.append(stack.pop())
-                    #print ("split")
-                elif (player1[0]==7 and player1[1]==7) and (sum(dealer)<=7):
-                    # player1Split1=[]
-                    player1Split1.append(player1.pop())
-                    player1.append(stack.pop())
-                    #print ("split")
-                elif (player1[0]==8 and player1[1]==8):
-                    # player1Split1=[]
-                    player1Split1.append(player1.pop())
-                    player1.append(stack.pop())
-                    #print ("split")
-                elif (player1[0]==9 and player1[1]==9) and (sum(dealer)<=6 or sum(dealer)==8 or sum(dealer)==9):
-                    # player1Split1=[]
-                    player1Split1.append(player1.pop())
-                    player1.append(stack.pop())
-                    #print ("split")
-    
-                elif sum(player1)>=17:
-                    while sum(dealer)<17:
-                        dealer.append(stack.pop())
-                elif (sum(player1)==16 or sum(player1)==15 or sum(player1)==14 or sum(player1)==13) and (sum(dealer)==2 or sum(dealer)==3 or sum(dealer)==4 or sum(dealer)==5 or sum(dealer)==6):
-                    while sum(dealer)<17:
-                        dealer.append(stack.pop())
-                elif (sum(player1)==16 or sum(player1)==15 or sum(player1)==14 or sum(player1)==13) and (sum(dealer)==7 or sum(dealer)==8 or sum(dealer)==9 or sum(dealer)==10):
-                    player1.append(stack.pop())
-                elif (sum(player1)==12) and (sum(dealer)==4 or sum(dealer)==5 or sum(dealer)==6):
-                    while sum(dealer)<17:
-                        dealer.append(stack.pop())
-                elif (sum(player1)==12) and (sum(dealer)==2 or sum(dealer)==3 or sum(dealer)==7 or sum(dealer)==8 or sum(dealer)==9 or sum(dealer)==10):
-                    player1.append(stack.pop())
-                elif (sum(player1)==11 and len(player1)==2):
-                    bet=bet*2
-                    player1.append(stack.pop())
-                    while sum(dealer)<17:
-                        dealer.append(stack.pop())
-                elif (sum(player1)==10 and len(player1)==2) and (sum(dealer)!=10):
-                    bet=bet*2
-                    player1.append(stack.pop())
-                    while sum(dealer)<17:
-                        dealer.append(stack.pop())
-                elif (sum(player1)==10) and (sum(dealer)==10):
-                    player1.append(stack.pop())
-                elif (sum(player1)==9 and len(player1)==2) and (sum(dealer)==3 or sum(dealer)==4 or sum(dealer)==5 or sum(dealer)==6):
-                    bet=bet*2
-                    player1.append(stack.pop())
-                    while sum(dealer)<17:
-                        dealer.append(stack.pop())
-                elif (sum(player1)==9) and (sum(dealer)!=3 or sum(dealer)!=4 or sum(dealer)!=5 or sum(dealer)!=6):
-                    player1.append(stack.pop())
-                elif (sum(player1))<=11:
-                    player1.append(stack.pop())
-
-                else:
-                    break
-
-                
+              
+        basicStrag()
 
 
 
@@ -289,6 +222,15 @@ for i in range(500):
         # K="K"
         # A="A"
 
+        # for i in player1:
+        #     print (i, "line ", cf.f_lineno)
+        #     print (random.randint(1,100), "line ", cf.f_lineno)
+        #     if i==10:
+        #         # if (random.randint(1,100)) < 25:
+        #         i="J"
+        #         print(player1, "line ", cf.f_lineno)
+
+
         print (player1)
         print (sum(player1))
         print (dealer)
@@ -308,7 +250,7 @@ for i in range(500):
             print(player1, "line ", cf.f_lineno)
             print(dealer, "line ", cf.f_lineno)
             player1Split1=[]
-            splitCards()
+            basicStrag()
 
 
         if len(stack)<=208:
