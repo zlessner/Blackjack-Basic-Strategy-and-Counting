@@ -17,12 +17,6 @@ cf = currentframe()
 
 cards= [{"2":2}, {"3":3}, {"4":4}, {"5":5}, {"6":6}, {"7":7}, {"8":8}, {"9":9}, {"10":10}, {"J":10}, {"Q":10}, {"K":10}, {"A":11}]
 
-for key in cards:
-    global face
-    face = list(key.keys())
-    print (face[0])
-
-
 
 # print (cards[0].items())
 
@@ -91,10 +85,16 @@ for i in range(500):
             global bet
             global playerTotal
             global dealerTotal
+            moo=[]
+            for x in dealer:
+                    moo.append(list(x.keys()))
 
+            oink=[]
+            for x in player1:
+                    oink.append(list(x.keys()))
 
-            print(dealer, "line ", cf.f_lineno)
-            print(player1, "line ", cf.f_lineno)
+            print(moo, "line ", cf.f_lineno)
+            print(oink, "line ", cf.f_lineno)
             
             while dealerTotal<17:
                     if (sum(player1[0].values())==2 and sum(player1[1].values())==2) and (sum(dealer[0].values())<=7):
@@ -173,11 +173,11 @@ for i in range(500):
                     else:
                         break
 
-                    
-            for x in player1:
-                playerTotal= playerTotal + sum(list(x.values()))
-            for y in dealer:
-                dealerTotal= dealerTotal + sum(list(y.values()))
+                    while dealerTotal<17:
+                        for x in player1:
+                            playerTotal= playerTotal + sum(list(x.values()))
+                        for y in dealer:
+                            dealerTotal= dealerTotal + sum(list(y.values()))
 
 
               
