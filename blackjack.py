@@ -77,7 +77,6 @@ for i in range(10000):
 
         playerTotal=0
         dealerTotal=0
-        over=[]
 
         player1.extend((stack.pop(), stack.pop()))
 
@@ -91,6 +90,12 @@ for i in range(10000):
 
         for y in dealer:
             dealerTotal= dealerTotal + sum(list(y.values()))
+
+        for z in range(len(player1)):
+                ace=list(player1[z].keys())
+                if (ace[0]=="A"):
+                    for worth in list(player1[z]):
+                        player1[z][worth] = 11
 
 
         
@@ -111,15 +116,6 @@ for i in range(10000):
                     player1Split1.append(player1.pop())
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     # print ("split")
                     # print(player1)
                     # print(player1Split1)
@@ -128,90 +124,36 @@ for i in range(10000):
                     player1Split1.append(player1.pop())
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     #print ("split")
                 elif (sum(player1[0].values())==4 and sum(player1[1].values())==4) and (sum(dealer[0].values())==5 or sum(dealer[0].values())==6):
                     # player1Split1=[]
                     player1Split1.append(player1.pop())
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     #print ("split")
                 elif (sum(player1[0].values())==6 and sum(player1[1].values())==6) and (sum(dealer[0].values())<=6):
                     # player1Split1=[]
                     player1Split1.append(player1.pop())
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     #print ("split")
                 elif (sum(player1[0].values())==7 and sum(player1[1].values())==7) and (sum(dealer[0].values())<=7):
                     # player1Split1=[]
                     player1Split1.append(player1.pop())
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     #print ("split")
                 elif (sum(player1[0].values())==8 and sum(player1[1].values())==8):
                     # player1Split1=[]
                     player1Split1.append(player1.pop())
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     #print ("split")
                 elif (sum(player1[0].values())==9 and sum(player1[1].values())==9) and (sum(dealer[0].values())<=6 or sum(dealer[0].values())==8 or sum(dealer[0].values())==9):
                     # player1Split1=[]
                     player1Split1.append(player1.pop())
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     #print ("split")
     
                 elif playerTotal>=17 and playerTotal<=21:
@@ -225,15 +167,6 @@ for i in range(10000):
                 elif (playerTotal==16 or playerTotal==15 or playerTotal==14 or playerTotal==13) and (dealerTotal==7 or dealerTotal==8 or dealerTotal==9 or dealerTotal==10):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                 elif (playerTotal==12) and (dealerTotal==4 or dealerTotal==5 or dealerTotal==6):
                     while dealerTotal<17:
                         dealer.append(stack.pop())
@@ -241,28 +174,10 @@ for i in range(10000):
                 elif (playerTotal==12) and (dealerTotal==2 or dealerTotal==3 or dealerTotal==7 or dealerTotal==8 or dealerTotal==9 or dealerTotal==10):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                 elif (playerTotal==11 and len(player1)==2):
                     bet=bet*2
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -270,70 +185,40 @@ for i in range(10000):
                     bet=bet*2
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif (playerTotal==10) and (dealerTotal==10):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                 elif (playerTotal==9 and len(player1)==2) and (dealerTotal==3 or dealerTotal==4 or dealerTotal==5 or dealerTotal==6):
                     bet=bet*2
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif (playerTotal==9) and (dealerTotal!=3 or dealerTotal!=4 or dealerTotal!=5 or dealerTotal!=6):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
-                elif (playerTotal)<=11:
+                elif playerTotal<=11:
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    if playerTotal>21:
-                        for i in range(len(player1)):
-                            front=list(player1[i].keys())
-                            back=list(player1[i].values())
-                            if (front[0]=="A"):
-                                for value in list(player1[i]):
-                                    player1[i][value] = 1
-                                    print(player1[i])
-                                    print("woof woof") 
+
+                elif playerTotal>21:
+                    for i in range(len(player1)):
+                        front=list(player1[i].keys())
+                        back=list(player1[i].values())
+                        if (front[0]=="A"):
+                            for value in list(player1[i]):
+                                player1[i][value] = 1
+                                playerTotal=playerTotal-10
+                                print(player1[i])
+                                print("woof woof") 
+
+                    if playerTotal>21:            
+                        break
+                                
 
                 else:
                     break
