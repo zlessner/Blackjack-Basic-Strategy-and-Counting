@@ -10,6 +10,7 @@ cf = currentframe()
 #catch fixes in logic (such as possibly when to double down with a 9)
 #simulate many times to see if make any money over time
 #sudo code and readme
+# adding "or 11 logic"
 
 
 
@@ -109,7 +110,24 @@ for i in range(10000):
             # print(moo, "line ", cf.f_lineno)
             # print(oink, "line ", cf.f_lineno)
             
-            while dealerTotal<17:
+            while dealerTotal<17: # and dealerTotal>21
+                # if dealerTotal>21:
+                #     for a in range(len(dealer)):
+                #         front1=list(dealer[a].keys())
+                #         back1=list(dealer[a].values())
+                #         if (front1[0]=="A"):
+                #             for value1 in list(dealer[i]):
+                #                 dealer[a][value1] = 1
+                #                 dealerTotal=dealerTotal-10
+                #                 print(dealer[a])
+                #                 print("meow meow") 
+                #                 dealer.append(stack.pop())
+                #                 dealerTotal= dealerTotal + sum(dealer[-1].values())
+
+                #     if dealerTotal>21:            
+                #         break
+
+
 
                 if (sum(player1[0].values())==2 and sum(player1[1].values())==2) and (sum(dealer[0].values())<=7):
                     # player1Split1=[]
@@ -209,11 +227,10 @@ for i in range(10000):
                     for i in range(len(player1)):
                         front=list(player1[i].keys())
                         back=list(player1[i].values())
-                        if (front[0]=="A"):
+                        if (back[0]==11):
                             for value in list(player1[i]):
                                 player1[i][value] = 1
                                 playerTotal=playerTotal-10
-                                print(player1[i])
                                 print("woof woof") 
 
                     if playerTotal>21:            
@@ -222,6 +239,8 @@ for i in range(10000):
 
                 else:
                     break
+
+            
 
 
 
