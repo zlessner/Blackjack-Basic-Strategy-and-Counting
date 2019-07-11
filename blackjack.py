@@ -11,6 +11,8 @@ cf = currentframe()
 #simulate many times to see if make any money over time
 #sudo code and readme
 # adding "or 11 logic"
+# soft 17 rule
+# [['A'], ['J'], ['10']]
 
 
 
@@ -110,25 +112,7 @@ for i in range(10000):
             # print(moo, "line ", cf.f_lineno)
             # print(oink, "line ", cf.f_lineno)
             
-            while dealerTotal<17: # and dealerTotal>21
-                # if dealerTotal>21:
-                #     for a in range(len(dealer)):
-                #         front1=list(dealer[a].keys())
-                #         back1=list(dealer[a].values())
-                #         if (front1[0]=="A"):
-                #             for value1 in list(dealer[i]):
-                #                 dealer[a][value1] = 1
-                #                 dealerTotal=dealerTotal-10
-                #                 print(dealer[a])
-                #                 print("meow meow") 
-                #                 dealer.append(stack.pop())
-                #                 dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                #     if dealerTotal>21:            
-                #         break
-
-
-
+            while dealerTotal<17:
                 if (sum(player1[0].values())==2 and sum(player1[1].values())==2) and (sum(dealer[0].values())<=7):
                     # player1Split1=[]
                     player1Split1.append(player1.pop())
@@ -178,6 +162,7 @@ for i in range(10000):
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
+                    break
                 elif (playerTotal==16 or playerTotal==15 or playerTotal==14 or playerTotal==13) and (dealerTotal==2 or dealerTotal==3 or dealerTotal==4 or dealerTotal==5 or dealerTotal==6):
                     while dealerTotal<17:
                         dealer.append(stack.pop())
@@ -239,6 +224,31 @@ for i in range(10000):
 
                 else:
                     break
+
+
+            while dealerTotal>21:
+                for a in range(len(dealer)):
+                    front1=list(dealer[a].keys())
+                    back1=list(dealer[a].values())
+                    if (back1[0]==11):
+                        for value1 in list(dealer[a]):
+                            dealer[a][value1] = 1
+                            dealerTotal=dealerTotal-10
+                            print("meow meow") 
+                            if dealerTotal<=21 and dealerTotal>=17: 
+                                break
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+                            if dealerTotal>21:
+                                continue
+
+                if dealerTotal<=21 and dealerTotal>=17:            
+                    break
+                if dealerTotal<17:
+                    continue
+                if dealerTotal>21:
+                    break
+
 
             
 
