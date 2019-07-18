@@ -85,6 +85,9 @@ for i in range(10000):
 
         dealer.append(stack.pop())
 
+        game=True
+        dealerGame=True
+
         
 
         for x in player1:
@@ -107,12 +110,15 @@ for i in range(10000):
             global playerTotal
             global dealerTotal
             global over
-
+            global game
+            global dealerGame
+            
 
             # print(moo, "line ", cf.f_lineno)
             # print(oink, "line ", cf.f_lineno)
             
             while dealerTotal<17:
+                print (playerTotal)
                 # if (sum(player1[0].values())==2 and sum(player1[1].values())==2) and (sum(dealer[0].values())<=7):
                 #     # player1Split1=[]
                 #     player1Split1.append(player1.pop())
@@ -216,11 +222,14 @@ for i in range(10000):
                         front=list(player1[i].keys())
                         back=list(player1[i].values())
                         if (back[0]==11):
-                            for value in list(player1[i]):
-                                # player1[i][value] = 1
-                                playerTotal=playerTotal-10
-                                print (playerTotal)
-                                print("woof woof") 
+                            if game==True:
+                                for value in list(player1[i]):
+                                    playerTotal=playerTotal-10
+                                    # player1[i][value] = 1
+                                    print ("player total below")
+                                    print (playerTotal)
+                                    print("woof woof") 
+                            game=False
 
                     if playerTotal>21:            
                         break
@@ -235,16 +244,18 @@ for i in range(10000):
                     front1=list(dealer[a].keys())
                     back1=list(dealer[a].values())
                     if (back1[0]==11):
-                        for value1 in list(dealer[a]):
-                            dealer[a][value1] = 1
-                            dealerTotal=dealerTotal-10
-                            print("meow meow") 
-                            if dealerTotal<=21 and dealerTotal>=17: 
-                                break
-                            dealer.append(stack.pop())
-                            dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            if dealerTotal>21:
-                                continue
+                        if dealerGame==True:
+                            for value1 in list(dealer[a]):
+                                # dealer[a][value1] = 1
+                                dealerTotal=dealerTotal-10
+                                print("meow meow") 
+                                if dealerTotal<=21 and dealerTotal>=17: 
+                                    break
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                                if dealerTotal>21:
+                                    continue
+                        dealerGame=False
 
                 if dealerTotal<=21 and dealerTotal>=17:            
                     break
@@ -330,26 +341,26 @@ for i in range(10000):
 
 
 
-        if (len(player1Split1)>=1):
-            print("split")
-            player1=[]
-            dealer=[dealer[0]]
-            player1.append(player1Split1.pop())
-            player1.append(stack.pop())
+        # if (len(player1Split1)>=1):
+        #     print("split")
+        #     player1=[]
+        #     dealer=[dealer[0]]
+        #     player1.append(player1Split1.pop())
+        #     player1.append(stack.pop())
 
 
-            splitPlay=[]
-            for x in player1:
-                splitPlay.append(list(x.keys()))
+        #     splitPlay=[]
+        #     for x in player1:
+        #         splitPlay.append(list(x.keys()))
 
-            splitDeal=[]
-            for x in dealer:
-                splitDeal.append(list(x.keys()))
+        #     splitDeal=[]
+        #     for x in dealer:
+        #         splitDeal.append(list(x.keys()))
 
-            print(splitPlay, "line ", cf.f_lineno)
-            print(splitDeal, "line ", cf.f_lineno)
-            player1Split1=[]
-            basicStrag()
+        #     print(splitPlay, "line ", cf.f_lineno)
+        #     print(splitDeal, "line ", cf.f_lineno)
+        #     player1Split1=[]
+        #     basicStrag()
 
 
         if len(stack)<=208:
