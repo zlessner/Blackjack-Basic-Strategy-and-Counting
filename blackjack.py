@@ -290,14 +290,14 @@ for i in range(10000):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                    elif aceList.count('A')==3 and meow==True:
+                    if aceList.count('A')==3 and meow==True:
                         dealerTotal=dealerTotal-10
                         meow=False
                         while dealerTotal<17:
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                    elif aceList.count('A')==4 and roar==True:
+                    if aceList.count('A')==4 and roar==True:
                         dealerTotal=dealerTotal-10
                         roar=False
                         while dealerTotal<17:
