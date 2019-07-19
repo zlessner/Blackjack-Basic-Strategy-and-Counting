@@ -93,6 +93,10 @@ for i in range(10000):
         goodbye=True
         howdy=True
         yo=True
+        open=False
+        close=False
+        open2=False
+        close2=False
         aceList=[]
         aceList2=[]
 
@@ -126,7 +130,10 @@ for i in range(10000):
             global goodbye
             global howdy
             global yo
-            
+            global open
+            global close
+            global open2
+            global close2
 
             # print(moo, "line ", cf.f_lineno)
             # print(oink, "line ", cf.f_lineno)
@@ -264,13 +271,27 @@ for i in range(10000):
                         if aceList2.count('A')==3 and howdy==True:
                             playerTotal=playerTotal-10
                             howdy=False
+                            if goodbye==True:
+                                open=True
                             continue
                     
                         if aceList2.count('A')==4 and yo==True:
                             playerTotal=playerTotal-10
                             yo=False
+                            if goodbye==True or howdy==True:
+                                close=True
                             continue
-                            
+                        
+                        if open==True:
+                            playerTotal=playerTotal-10
+                            open=False
+                            continue
+
+                        if close==True:
+                            playerTotal=playerTotal-10
+                            close=False
+                            continue
+
                         else:
                             break    
                         
@@ -330,6 +351,8 @@ for i in range(10000):
                     if aceList.count('A')==3 and meow==True:
                         dealerTotal=dealerTotal-10
                         meow=False
+                        if woof==True:
+                                open2=True
                         if dealerTotal<=21 and dealerTotal>=17:            
                             break
                         while dealerTotal<17:
@@ -340,6 +363,28 @@ for i in range(10000):
                     if aceList.count('A')==4 and roar==True:
                         dealerTotal=dealerTotal-10
                         roar=False
+                        if meow==True or woof==True:
+                                close2=True
+                        if dealerTotal<=21 and dealerTotal>=17:            
+                            break
+                        while dealerTotal<17:
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
+
+                    if open2==True:
+                        dealerTotal=dealerTotal-10
+                        open2=False
+                        if dealerTotal<=21 and dealerTotal>=17:            
+                            break
+                        while dealerTotal<17:
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
+
+                    if close2==True:
+                        dealerTotal=dealerTotal-10
+                        close2=False
                         if dealerTotal<=21 and dealerTotal>=17:            
                             break
                         while dealerTotal<17:
