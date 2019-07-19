@@ -99,6 +99,7 @@ for i in range(10000):
         close2=False
         aceList=[]
         aceList2=[]
+        playerList=[]
 
         
 
@@ -134,6 +135,7 @@ for i in range(10000):
             global close
             global open2
             global close2
+            global playerList
 
             # print(moo, "line ", cf.f_lineno)
             # print(oink, "line ", cf.f_lineno)
@@ -185,7 +187,76 @@ for i in range(10000):
                 #     playerTotal= playerTotal + sum(player1[-1].values())
                 #     #print ("split")
     
-                if playerTotal>=17 and playerTotal<=21:
+                playerList=[]
+                for x in player1:
+                    for number in x:
+                        playerList.append(number)
+
+                woofList=[]
+                for x in player1:
+                    for number in x:
+                        woofList.append((list(number)))
+
+                oinkSum=0
+                # for t in woofList:
+                #     if t != 'A':
+                #         oinkSum=sum(list(woofList))
+                print("woofList")
+                print(woofList)
+                print("oinkSum")
+                print(oinkSum)
+                    
+                if playerList.count('A')==1 and (playerList.count('2')==1 or playerList.count('3')==1) and len(playerList)==2 and (dealerTotal!=5 or dealerTotal!=6):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                elif playerList.count('A')==1 and (playerList.count('2')==1 or playerList.count('3')==1) and len(playerList)==2 and (dealerTotal==5 or dealerTotal==6):
+                    bet=bet*2
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                    if playerTotal>21:
+                        playerTotal=playerTotal-10
+                    while dealerTotal<17:
+                        dealer.append(stack.pop())
+                        dealerTotal= dealerTotal + sum(dealer[-1].values())
+                elif playerList.count('A')==1 and (playerList.count('4')==1 or playerList.count('5')==1) and len(playerList)==2 and (dealerTotal!=4 or dealerTotal!=5 or dealerTotal!=6):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                elif playerList.count('A')==1 and (playerList.count('4')==1 or playerList.count('5')==1) and len(playerList)==2 and (dealerTotal==4 or dealerTotal==5 or dealerTotal==6):
+                    bet=bet*2
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                    if playerTotal>21:
+                        playerTotal=playerTotal-10
+                    while dealerTotal<17:
+                        dealer.append(stack.pop())
+                        dealerTotal= dealerTotal + sum(dealer[-1].values())
+                elif playerList.count('A')==1 and playerList.count('6')==1 and len(playerList)==2 and (dealerTotal!=3 or dealerTotal!=4 or dealerTotal!=5 or dealerTotal!=6):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                elif playerList.count('A')==1 and (playerList.count('6')==1 or playerList.count('7')==1) and len(playerList)==2 and (dealerTotal==3 or dealerTotal==4 or dealerTotal==5 or dealerTotal==6):
+                    bet=bet*2
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                    if playerTotal>21:
+                        playerTotal=playerTotal-10
+                    while dealerTotal<17:
+                        dealer.append(stack.pop())
+                        dealerTotal= dealerTotal + sum(dealer[-1].values())
+                elif playerList.count('A')==1 and playerList.count('7')==1 and len(playerList)==2 and (dealerTotal==2 or dealerTotal==7 or dealerTotal==8):
+                    while dealerTotal<17:
+                        dealer.append(stack.pop())
+                        dealerTotal= dealerTotal + sum(dealer[-1].values())
+                    break
+                elif playerList.count('A')==1 and playerList.count('7')==1 and len(playerList)==2 and (dealerTotal==9 or dealerTotal==10 or dealerTotal==11):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                elif playerTotal<=17 and playerList.count('A')<=1 and sum(list(player1.values()))<=6:
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                elif playerTotal==18 and playerList.count('A')<=1 and (playerTotal-(11*playerList.count('A')))<=7 and (dealerTotal!=2 or dealerTotal!=7 or dealerTotal!=8):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                elif playerTotal>=17 and playerTotal<=21:
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
