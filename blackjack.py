@@ -12,7 +12,6 @@ random.shuffle(stack)
 
 
 #sudo code and readme
-# soft 17 rule
 
 
 
@@ -387,7 +386,7 @@ for i in range(10000):
                     for i in range(len(player1)):
                         front=list(player1[i].keys())
                         back=list(player1[i].values())
-                        if (aceList2.count('A')==1):
+                        if (aceList2.count('A')>=1):
                             if game==True:
                                 playerTotal=playerTotal-10
                                 # print ("player total below")
@@ -448,10 +447,17 @@ for i in range(10000):
 
 
             while dealerTotal>21:
+                aceList=[]
+                for x in dealer:
+                    for number in x:
+                        aceList.append(number)
+                # print(aceList)
+                # print ('hi')
+                # print (aceList.count('A'))
                 for a in range(len(dealer)):
                     front1=list(dealer[a].keys())
                     back1=list(dealer[a].values())
-                    if (back1[0]==11):
+                    if (aceList.count('A')>=1):
                         if dealerGame==True:
                             for value1 in list(dealer[a]):
                                 dealerTotal=dealerTotal-10
@@ -470,17 +476,12 @@ for i in range(10000):
                         if aceList.count('A')>=1 and dealerTotal==17:
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
+                if aceList.count('A')>=1 and dealerTotal==17:
+                        dealer.append(stack.pop())
+                        dealerTotal= dealerTotal + sum(dealer[-1].values())
                 if dealerTotal<=21 and dealerTotal>=17:            
                     break
                 if dealerTotal>21:
-                    aceList=[]
-                    for x in dealer:
-                        for number in x:
-                            aceList.append(number)
-                    # print(aceList)
-                    # print ('hi')
-                    # print (aceList.count('A'))
-
                     if aceList.count('A')==2 and woof==True:
                         dealerTotal=dealerTotal-10
                         woof=False
