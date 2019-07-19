@@ -90,7 +90,16 @@ for i in range(10000):
         woof=True
         meow=True
         roar=True
+        ribbit=True
+        drip=True
+        hiss=True
+        switch=True
+        hello=True
+        goodbye=True
+        howdy=True
+        yo=True
         aceList=[]
+        aceList2=[]
 
         
 
@@ -119,6 +128,14 @@ for i in range(10000):
             global woof
             global meow
             global roar
+            global ribbit
+            global drip
+            global hiss
+            global switch
+            global hello
+            global goodbye
+            global howdy
+            global yo
             
 
             # print(moo, "line ", cf.f_lineno)
@@ -225,21 +242,56 @@ for i in range(10000):
                     playerTotal= playerTotal + sum(player1[-1].values())
 
                 elif playerTotal>21:
-                    for i in range(len(player1)):
-                        front=list(player1[i].keys())
-                        back=list(player1[i].values())
-                        if (back[0]==11):
-                            #AceList length for double Aces
-                            if game==True:
-                                for value in list(player1[i]):
-                                    playerTotal=playerTotal-10
-                                    # player1[i][value] = 1
-                                    print ("player total below")
-                                    print (playerTotal)
-                                    print("woof woof") 
-                            game=False
+                    # for i in range(len(player1)):
+                    #     front=list(player1[i].keys())
+                    #     back=list(player1[i].values())
+                    #     if (back[0]==11):
+                    #         #AceList length for double Aces
+                    #         if game==True:
+                    #             if sum(dealer[-1].values())==11:
+                    #                 while dealerTotal<17:
+                    #                     dealer.append(stack.pop())
+                    #                     dealerTotal= dealerTotal + sum(dealer[-1].values())
+                    #                 for value in list(player1[i]):
+                    #                     playerTotal=playerTotal-10
+                    #                     # player1[i][value] = 1
+                    #                     print ("player total below")
+                    #                     print (playerTotal)
+                    #                     print("woof woof") 
+                    #             game=False
+                    #             continue
+                            
 
-                    if playerTotal>21:            
+                    # if playerTotal>21:
+                    for x in player1:
+                        for number in x:
+                            aceList2.append(number)
+                    print(aceList2)
+                    print ('hello')
+                    print (aceList2.count('A'))
+
+                    if aceList2.count('A')==2 and switch==True:
+                        playerTotal=playerTotal-10
+                        switch=False
+                        continue
+                    if aceList2.count('A')==3 and hello==True:
+                        playerTotal=playerTotal-10
+                        hello=False
+                        continue
+                    if aceList2.count('A')==4 and goodbye==True:
+                        playerTotal=playerTotal-10
+                        goodbye=False
+                        continue
+                    if aceList2.count('A')==5 and howdy==True:
+                        playerTotal=playerTotal-10
+                        howdy=False
+                        continue
+                    if aceList2.count('A')==6 and yo==True:
+                        playerTotal=playerTotal-10
+                        yo=False
+                        continue
+                        
+                    else:
                         break
                                 
 
@@ -253,30 +305,29 @@ for i in range(10000):
                     back1=list(dealer[a].values())
                     if (back1[0]==11):
                         if dealerGame==True:
-                            # if sum(dealer[-1].values())==11:
-                            for value1 in list(dealer[a]):
-                                # dealer[a][value1] = 1
-                                dealerTotal=dealerTotal-10
-                                print("meow meow") 
-                                if dealerTotal<=21 and dealerTotal>=17: 
-                                    break
-                                dealer.append(stack.pop())
-                                dealerTotal= dealerTotal + sum(dealer[-1].values())
-                                # if sum(dealer[-1].values())==11:
-                                #     dealerTotal=dealerTotal-10
-                                # if dealerTotal>21:
-                                #     continue
-                            
-                        dealerGame=False
+                            if sum(dealer[-1].values())==11:
+                                for value1 in list(dealer[a]):
+                                    # dealer[a][value1] = 1
+                                    dealerTotal=dealerTotal-10
+                                    print("meow meow") 
+                                    if dealerTotal<=21 and dealerTotal>=17: 
+                                        break
+                                    dealer.append(stack.pop())
+                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
+                                    if sum(dealer[-1].values())==11:
+                                        dealerTotal=dealerTotal-10
+                                    if dealerTotal>21:
+                                        continue
+                            else:
+                                dealerGame=False
 
+                if dealerTotal<=21 and dealerTotal>=17:            
+                    break
                 if dealerTotal<17:
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                if dealerTotal<=21 and dealerTotal>=17:            
-                    break
                 if dealerTotal>21:
-                    aceList=[]
                     for x in dealer:
                         for number in x:
                             aceList.append(number)
@@ -287,32 +338,44 @@ for i in range(10000):
                     if aceList.count('A')==2 and woof==True:
                         dealerTotal=dealerTotal-10
                         woof=False
-                        if dealerTotal<=21 and dealerTotal>=17:            
-                            break
                         while dealerTotal<17:
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
-                        continue
 
                     if aceList.count('A')==3 and meow==True:
                         dealerTotal=dealerTotal-10
                         meow=False
-                        if dealerTotal<=21 and dealerTotal>=17:            
-                            break
                         while dealerTotal<17:
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
-                        continue
 
                     if aceList.count('A')==4 and roar==True:
                         dealerTotal=dealerTotal-10
                         roar=False
-                        if dealerTotal<=21 and dealerTotal>=17:            
-                            break
                         while dealerTotal<17:
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
-                        continue
+
+                    if aceList.count('A')==5 and ribbit==True:
+                        dealerTotal=dealerTotal-10
+                        ribbit=False
+                        while dealerTotal<17:
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+
+                    if aceList.count('A')==6 and drip==True:
+                        dealerTotal=dealerTotal-10
+                        drip=False
+                        while dealerTotal<17:
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+
+                    if aceList.count('A')==7 and hiss==True:
+                        dealerTotal=dealerTotal-10
+                        hiss=False
+                        while dealerTotal<17:
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
 
                     else:
                         break

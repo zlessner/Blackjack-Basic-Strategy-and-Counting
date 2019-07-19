@@ -90,6 +90,7 @@ for i in range(10000):
         woof=True
         meow=True
         roar=True
+        hand=True
         aceList=[]
 
         
@@ -119,6 +120,7 @@ for i in range(10000):
             global woof
             global meow
             global roar
+            global hand
             
 
             # print(moo, "line ", cf.f_lineno)
@@ -248,184 +250,75 @@ for i in range(10000):
 
 
             while dealerTotal>21:
-                for a in range(len(dealer)):
-                    front1=list(dealer[a].keys())
-                    back1=list(dealer[a].values())
-                    if (back1[0]==11):
-                        if dealerGame==True:
-                            # if sum(dealer[-1].values())==11:
-                            for value1 in list(dealer[a]):
-                                # dealer[a][value1] = 1
-                                dealerTotal=dealerTotal-10
-                                print("meow meow") 
-                                if dealerTotal<=21 and dealerTotal>=17: 
-                                    break
-                                dealer.append(stack.pop())
-                                dealerTotal= dealerTotal + sum(dealer[-1].values())
-                                # if sum(dealer[-1].values())==11:
-                                #     dealerTotal=dealerTotal-10
-                                # if dealerTotal>21:
-                                #     continue
-                            
-                        dealerGame=False
+                # for a in range(len(dealer)):
+                #     front1=list(dealer[a].keys())
+                #     back1=list(dealer[a].values())
+                #     if (back1[0]==11):
+                #         if dealerGame==True:
+                #             if sum(dealer[-1].values())==11:
+                #                 for value1 in list(dealer[a]):
+                #                     # dealer[a][value1] = 1
+                #                     dealerTotal=dealerTotal-10
+                #                     print("meow meow") 
+                #                     if dealerTotal<=21 and dealerTotal>=17: 
+                #                         break
+                #                     dealer.append(stack.pop())
+                #                     dealerTotal= dealerTotal + sum(dealer[-1].values())
+                #                     if sum(dealer[-1].values())==11:
+                #                         dealerTotal=dealerTotal-10
+                #                     if dealerTotal>21:
+                #                         continue
+                #             else:
+                #                 dealerGame=False
 
+
+                if dealerTotal>21:
+                    if dealerGame==True:
+                        for x in dealer:
+                            for number in x:
+                                aceList.append(number)
+                        print(aceList)
+                        print ('hi')
+                        print (aceList.count('A'))
+
+                        if aceList.count('A')==1 and hand==True:
+                            dealerTotal=dealerTotal-10
+                            hand=False
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+                            continue
+
+                        if aceList.count('A')==2 and woof==True:
+                            dealerTotal=dealerTotal-10
+                            woof=False
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+                            continue
+
+                        if aceList.count('A')==3 and meow==True:
+                            dealerTotal=dealerTotal-10
+                            meow=False
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+                            continue
+
+                        if aceList.count('A')==4 and roar==True:
+                            dealerTotal=dealerTotal-10
+                            roar=False
+                            dealer.append(stack.pop())
+                            dealerTotal= dealerTotal + sum(dealer[-1].values())
+                            continue
+                        
+
+                if dealerTotal<=21 and dealerTotal>=17:            
+                    break
                 if dealerTotal<17:
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                if dealerTotal<=21 and dealerTotal>=17:            
+                else:
                     break
-                if dealerTotal>21:
-                    aceList=[]
-                    for x in dealer:
-                        for number in x:
-                            aceList.append(number)
-                    print(aceList)
-                    print ('hi')
-                    print (aceList.count('A'))
 
-                    if aceList.count('A')==2 and woof==True:
-                        dealerTotal=dealerTotal-10
-                        woof=False
-                        if dealerTotal<=21 and dealerTotal>=17:            
-                            break
-                        while dealerTotal<17:
-                            dealer.append(stack.pop())
-                            dealerTotal= dealerTotal + sum(dealer[-1].values())
-                        continue
-
-                    if aceList.count('A')==3 and meow==True:
-                        dealerTotal=dealerTotal-10
-                        meow=False
-                        if dealerTotal<=21 and dealerTotal>=17:            
-                            break
-                        while dealerTotal<17:
-                            dealer.append(stack.pop())
-                            dealerTotal= dealerTotal + sum(dealer[-1].values())
-                        continue
-
-                    if aceList.count('A')==4 and roar==True:
-                        dealerTotal=dealerTotal-10
-                        roar=False
-                        if dealerTotal<=21 and dealerTotal>=17:            
-                            break
-                        while dealerTotal<17:
-                            dealer.append(stack.pop())
-                            dealerTotal= dealerTotal + sum(dealer[-1].values())
-                        continue
-
-                    else:
-                        break
 
 
             
-
-
-
-                        
-
-
-              
-        basicStrag()
-
-
-
-
-        if (playerTotal==21 and dealerTotal!=21 and len(player1)==2):
-            bankRoll=bankRoll+(bet*1.5)
-        elif playerTotal>21:
-            bankRoll=bankRoll-bet
-        elif dealerTotal>21:
-            bankRoll=bankRoll+bet
-        elif playerTotal<dealerTotal:
-            bankRoll=bankRoll-bet
-        elif playerTotal==dealerTotal:
-            bankRoll=bankRoll
-        else: 
-            bankRoll=bankRoll+bet
-
-            
-
-        
-        
-        meow=[]
-        for x in player1:
-            meow.append((list(x.keys())))
-
-        roar=[]
-        for x in dealer:
-            roar.append((list(x.keys())))
-
-
-        for x in meow:
-            if x in smallCards:
-                count +=1
-
-            if x in bigCards:
-                count -=1
-
-
-        for x in roar:
-            if x in smallCards:
-                count +=1
-
-            if x in bigCards:
-                count -=1
-
-
-
-
-        oink=[]
-        for x in player1:
-            oink.append(list(x.keys()))
-
-        moo=[]
-        for x in dealer:
-            moo.append(list(x.keys()))
-
-        
-        print(f'Player hand: {oink}')
-        print (playerTotal)
-        print(f'Dealer hand: {moo}')
-        print (dealerTotal)
-        print(f'True count: {count}')
-        print(f'Bankroll: ${bankRoll}')
-        print ("Next hand")      
-
-
-
-        # if (len(player1Split1)>=1):
-        #     print("split")
-        #     player1=[]
-        #     dealer=[dealer[0]]
-        #     player1.append(player1Split1.pop())
-        #     player1.append(stack.pop())
-
-
-        #     splitPlay=[]
-        #     for x in player1:
-        #         splitPlay.append(list(x.keys()))
-
-        #     splitDeal=[]
-        #     for x in dealer:
-        #         splitDeal.append(list(x.keys()))
-
-        #     print(splitPlay, "line ", cf.f_lineno)
-        #     print(splitDeal, "line ", cf.f_lineno)
-        #     player1Split1=[]
-        #     basicStrag()
-
-
-        if len(stack)<=208:
-            stack= numDecks * deck
-            random.shuffle(stack)
-            count=0
-            print("Entire deck has been shuffled")
-
-    
-    # elif play == "N" or play =="n":
-    #     break
-    
-    # else:
-    #     print("Please enter y/n")
-
