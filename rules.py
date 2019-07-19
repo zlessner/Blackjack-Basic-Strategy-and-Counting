@@ -2,7 +2,7 @@ from cards import cards, smallCards, bigCards
 
 count =0
 
-bankRoll=5000
+bankRoll=50000
 
 deck= cards*4
 

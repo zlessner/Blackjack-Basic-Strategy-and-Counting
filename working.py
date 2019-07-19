@@ -16,7 +16,7 @@ random.shuffle(stack)
 
 
 # while True:
-for i in range(100000):
+for i in range(50000):
 
     # play = str(input("Would you like to play the blackjack hand? y/n "))
 
@@ -69,9 +69,8 @@ for i in range(100000):
         yo=True
         more=True
         evenMore=True
-        move=True
-        gate=True
         open=False
+        first=False
         close=False
         open2=False
         close2=False
@@ -122,8 +121,7 @@ for i in range(100000):
             global close3
             global evenMore
             global open3
-            global move
-            global gate
+            global first
 
             
             while dealerTotal<17:
@@ -134,7 +132,7 @@ for i in range(100000):
                         playerList.append(number)
 
                 for h in player1:
-                    if playerList.count('A')>=1 and gate==True:
+                    if playerList.count('A')>=1:
                         otherTotal=playerTotal-11    
                     else:
                         otherTotal=otherTotal + sum(list(h.values())) 
@@ -250,7 +248,6 @@ for i in range(100000):
                     playerTotal= playerTotal + sum(player1[-1].values())
                     if playerTotal>21:
                         playerTotal=playerTotal-10
-                        gate=False
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -267,7 +264,6 @@ for i in range(100000):
                     playerTotal= playerTotal + sum(player1[-1].values())
                     if playerTotal>21:
                         playerTotal=playerTotal-10
-                        gate=False
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -284,7 +280,6 @@ for i in range(100000):
                     playerTotal= playerTotal + sum(player1[-1].values())
                     if playerTotal>21:
                         playerTotal=playerTotal-10
-                        gate=False
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -303,16 +298,12 @@ for i in range(100000):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
                 elif playerTotal<=17 and playerList.count('A')>=1 and otherTotal<=6:
-                    print("first")
-                    print(otherTotal)
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
                 elif playerTotal==18 and playerList.count('A')>=1 and (dealerTotal!=2 and dealerTotal!=7 and dealerTotal!=8) and otherTotal<=7:
-                    print("second")
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
                 elif playerTotal>=17 and playerTotal<=21:
-                    print("hello")
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -321,7 +312,6 @@ for i in range(100000):
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                     break
                 elif (playerTotal==16 or playerTotal==15 or playerTotal==14 or playerTotal==13) and (dealerTotal==2 or dealerTotal==3 or dealerTotal==4 or dealerTotal==5 or dealerTotal==6):
-                    print("woof")
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -395,147 +385,157 @@ for i in range(100000):
                     # print(aceList2)
                     # print ('hi')
                     # print (aceList2.count('A'))
-                    for i in range(len(player1)):
-                        front=list(player1[i].keys())
-                        back=list(player1[i].values())
-                        if (aceList2.count('A')>=1):
-                            if game==True:
-                                playerTotal=playerTotal-10
-                                gate=False
-                                # print ("player total below")
-                                # print (playerTotal)
-                                # print("woof woof") 
-                            game=False
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            if move==True:
-                                move=False      
-                                continue
+                        # if (aceList2.count('A')>=1):
+                        #     if game==True:
+                        #         playerTotal=playerTotal-10
+                        #         # print ("player total below")
+                        #         # print (playerTotal)
+                        #         # print("woof woof") 
+                        #     game=False
+                            
+                                    
+                            # continue
                             
                         
 
-                    if playerTotal>21:
-                        if aceList2.count('A')==2 and goodbye==True:
-                            playerTotal=playerTotal-10
-                            gate=False
-                            goodbye=False
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                    # if playerTotal>21:
+
+                    if aceList2.count('A')==1 and game==True:
+                        playerTotal=playerTotal-10
+                        game=False
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
                                 while dealerTotal<17:
                                     dealer.append(stack.pop())
                                     dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            continue  
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue 
 
-                        if aceList2.count('A')==3 and howdy==True:
-                            playerTotal=playerTotal-10
-                            gate=False
-                            howdy=False
-                            if goodbye==True:
-                                open=True
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                    if aceList2.count('A')==2 and goodbye==True:
+                        playerTotal=playerTotal-10
+                        goodbye=False
+                        if game==True:
+                            first=True
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
                                 while dealerTotal<17:
                                     dealer.append(stack.pop())
                                     dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue  
+
+                    if aceList2.count('A')==3 and howdy==True:
+                        playerTotal=playerTotal-10
+                        howdy=False
+                        if goodbye==True:
+                            open=True
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
                                 while dealerTotal<17:
                                     dealer.append(stack.pop())
                                     dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            continue
+
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
+                
+                    if aceList2.count('A')==4 and yo==True:
+                        playerTotal=playerTotal-10
+                        yo=False
+                        if goodbye==True or howdy==True:
+                            close=True
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                                while dealerTotal<17:
+                                    dealer.append(stack.pop())
+                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
+
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
+
+                    if aceList2.count('A')==5 and evenMore==True:
+                        playerTotal=playerTotal-10
+                        evenMore=False
+                        if goodbye==True or howdy==True or yo==True:
+                            open3=True
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                                while dealerTotal<17:
+                                    dealer.append(stack.pop())
+                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
+
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
                     
-                        if aceList2.count('A')==4 and yo==True:
-                            playerTotal=playerTotal-10
-                            yo=False
-                            gate=False
-                            if goodbye==True or howdy==True:
-                                close=True
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                    if first==True:
+                        playerTotal=playerTotal-10
+                        first=False
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
                                 while dealerTotal<17:
                                     dealer.append(stack.pop())
                                     dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            continue
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
 
-                        if aceList2.count('A')==5 and evenMore==True:
-                            playerTotal=playerTotal-10
-                            gate=False
-                            evenMore=False
-                            if goodbye==True or howdy==True or yo==True:
-                                open3=True
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                    if open==True:
+                        playerTotal=playerTotal-10
+                        open=False
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
                                 while dealerTotal<17:
                                     dealer.append(stack.pop())
                                     dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            continue
-                        
-                        if open==True:
-                            playerTotal=playerTotal-10
-                            gate=False
-                            open=False
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
+
+                    if close==True:
+                        playerTotal=playerTotal-10
+                        close=False
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
                                 while dealerTotal<17:
                                     dealer.append(stack.pop())
                                     dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            continue
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
 
-                        if close==True:
-                            playerTotal=playerTotal-10
-                            gate=False
-                            close=False
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            continue
-
-                        if open3==True:
-                            playerTotal=playerTotal-10
-                            gate=False
-                            evenMore=False
-                            if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
+                    if open3==True:
+                        playerTotal=playerTotal-10
+                        evenMore=False
+                        if playerTotal==17 and playerList.count('A')>=1 and otherTotal>6:
                                 while dealerTotal<17:
                                     dealer.append(stack.pop())
                                     dealerTotal= dealerTotal + sum(dealer[-1].values())
 
-                            if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
-                                while dealerTotal<17:
-                                    dealer.append(stack.pop())
-                                    dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            continue
+                        if playerTotal==18 and playerList.count('A')>=1 and otherTotal>7:
+                            while dealerTotal<17:
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
+                        continue
 
-                        else:
-                            break    
+                    else:
+                        break    
                         
                                 
 
