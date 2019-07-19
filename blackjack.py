@@ -90,7 +90,11 @@ for i in range(10000):
         woof=True
         meow=True
         roar=True
+        goodbye=True
+        howdy=True
+        yo=True
         aceList=[]
+        aceList2=[]
 
         
 
@@ -119,6 +123,9 @@ for i in range(10000):
             global woof
             global meow
             global roar
+            global goodbye
+            global howdy
+            global yo
             
 
             # print(moo, "line ", cf.f_lineno)
@@ -238,9 +245,35 @@ for i in range(10000):
                                     print (playerTotal)
                                     print("woof woof") 
                             game=False
+                            continue
 
-                    if playerTotal>21:            
-                        break
+                    if playerTotal>21:
+                        aceList2=[]
+                        for x in player1:
+                            for number in x:
+                                aceList2.append(number)
+                        print(aceList2)
+                        print ('hi')
+                        print (aceList2.count('A'))    
+
+                        if aceList2.count('A')==2 and goodbye==True:
+                            playerTotal=playerTotal-10
+                            goodbye=False
+                            continue  
+
+                        if aceList2.count('A')==3 and howdy==True:
+                            playerTotal=playerTotal-10
+                            howdy=False
+                            continue
+                    
+                        if aceList2.count('A')==4 and yo==True:
+                            playerTotal=playerTotal-10
+                            yo=False
+                            continue
+                            
+                        else:
+                            break    
+                        
                                 
 
                 else:
@@ -348,16 +381,16 @@ for i in range(10000):
 
         
         
-        meow=[]
+        cat=[]
         for x in player1:
-            meow.append((list(x.keys())))
+            cat.append((list(x.keys())))
 
-        roar=[]
+        lion=[]
         for x in dealer:
-            roar.append((list(x.keys())))
+            lion.append((list(x.keys())))
 
 
-        for x in meow:
+        for x in cat:
             if x in smallCards:
                 count +=1
 
@@ -365,7 +398,7 @@ for i in range(10000):
                 count -=1
 
 
-        for x in roar:
+        for x in lion:
             if x in smallCards:
                 count +=1
 
