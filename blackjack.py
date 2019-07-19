@@ -141,72 +141,108 @@ for i in range(10000):
             # print(oink, "line ", cf.f_lineno)
             
             while dealerTotal<17:
-                print (playerTotal)
-                # if (sum(player1[0].values())==2 and sum(player1[1].values())==2) and (sum(dealer[0].values())<=7):
-                #     # player1Split1=[]
-                #     player1Split1.append(player1.pop())
-                #     player1.append(stack.pop())
-                #     playerTotal= playerTotal + sum(player1[-1].values())
-                #     # print ("split")
-                #     # print(player1)
-                #     # print(player1Split1)
-                # elif (sum(player1[0].values())==3 and sum(player1[1].values())==3) and (sum(dealer[0].values())<=7):
-                #     # player1Split1=[]
-                #     player1Split1.append(player1.pop())
-                #     player1.append(stack.pop())
-                #     playerTotal= playerTotal + sum(player1[-1].values())
-                #     #print ("split")
-                # elif (sum(player1[0].values())==4 and sum(player1[1].values())==4) and (sum(dealer[0].values())==5 or sum(dealer[0].values())==6):
-                #     # player1Split1=[]
-                #     player1Split1.append(player1.pop())
-                #     player1.append(stack.pop())
-                #     playerTotal= playerTotal + sum(player1[-1].values())
-                #     #print ("split")
-                # elif (sum(player1[0].values())==6 and sum(player1[1].values())==6) and (sum(dealer[0].values())<=6):
-                #     # player1Split1=[]
-                #     player1Split1.append(player1.pop())
-                #     player1.append(stack.pop())
-                #     playerTotal= playerTotal + sum(player1[-1].values())
-                #     #print ("split")
-                # elif (sum(player1[0].values())==7 and sum(player1[1].values())==7) and (sum(dealer[0].values())<=7):
-                #     # player1Split1=[]
-                #     player1Split1.append(player1.pop())
-                #     player1.append(stack.pop())
-                #     playerTotal= playerTotal + sum(player1[-1].values())
-                #     #print ("split")
-                # elif (sum(player1[0].values())==8 and sum(player1[1].values())==8):
-                #     # player1Split1=[]
-                #     player1Split1.append(player1.pop())
-                #     player1.append(stack.pop())
-                #     playerTotal= playerTotal + sum(player1[-1].values())
-                #     #print ("split")
-                # elif (sum(player1[0].values())==9 and sum(player1[1].values())==9) and (sum(dealer[0].values())<=6 or sum(dealer[0].values())==8 or sum(dealer[0].values())==9):
-                #     # player1Split1=[]
-                #     player1Split1.append(player1.pop())
-                #     player1.append(stack.pop())
-                #     playerTotal= playerTotal + sum(player1[-1].values())
-                #     #print ("split")
-    
+
                 playerList=[]
                 for x in player1:
                     for number in x:
                         playerList.append(number)
 
-                woofList=[]
-                for x in player1:
-                    for number in x:
-                        woofList.append((list(number)))
+                if (sum(player1[0].values())==2 and sum(player1[1].values())==2) and (sum(dealer[0].values())<=7):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
+                elif (sum(player1[0].values())==3 and sum(player1[1].values())==3) and (sum(dealer[0].values())<=7):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
+                elif (sum(player1[0].values())==4 and sum(player1[1].values())==4) and (sum(dealer[0].values())==5 or sum(dealer[0].values())==6):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
+                elif (sum(player1[0].values())==6 and sum(player1[1].values())==6) and (sum(dealer[0].values())<=6):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
+                elif (sum(player1[0].values())==7 and sum(player1[1].values())==7) and (sum(dealer[0].values())<=7):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
+                elif (sum(player1[0].values())==8 and sum(player1[1].values())==8):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
+                elif (sum(player1[0].values())==9 and sum(player1[1].values())==9) and (sum(dealer[0].values())<=6 or sum(dealer[0].values())==8 or sum(dealer[0].values())==9):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
+                elif (sum(player1[0].values())==11 and sum(player1[1].values())==11):
+                    player1.pop()
+                    player1.append(stack.pop())
+                    playerTotal=0
+                    for x in player1:
+                        playerTotal= playerTotal+ sum(list(x.values())) 
+                    print ("split")
+                    print (sum(player1[0].values()))
+                    bet=bet*2
+                    continue
 
-                oinkSum=0
-                # for t in woofList:
-                #     if t != 'A':
-                #         oinkSum=sum(list(woofList))
-                print("woofList")
-                print(woofList)
-                print("oinkSum")
-                print(oinkSum)
+                # woofList=[]
+                # for x in player1:
+                #     for number in x:
+                #         woofList.append((list(number)))
+
+                # oinkSum=0
+                # # for t in woofList:
+                # #     if t != 'A':
+                # #         oinkSum=sum(list(woofList))
+                # print("woofList")
+                # print(woofList)
+                # print("oinkSum")
+                # print(oinkSum)
                     
-                if playerList.count('A')==1 and (playerList.count('2')==1 or playerList.count('3')==1) and len(playerList)==2 and (dealerTotal!=5 or dealerTotal!=6):
+                elif playerList.count('A')==1 and (playerList.count('2')==1 or playerList.count('3')==1) and len(playerList)==2 and (dealerTotal!=5 or dealerTotal!=6):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
                 elif playerList.count('A')==1 and (playerList.count('2')==1 or playerList.count('3')==1) and len(playerList)==2 and (dealerTotal==5 or dealerTotal==6):
@@ -250,10 +286,10 @@ for i in range(10000):
                 elif playerList.count('A')==1 and playerList.count('7')==1 and len(playerList)==2 and (dealerTotal==9 or dealerTotal==10 or dealerTotal==11):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                elif playerTotal<=17 and playerList.count('A')<=1 and sum(list(player1.values()))<=6:
+                elif playerTotal<=17 and playerList.count('A')>=1: #and sum(list(player1.values()))<=6:
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                elif playerTotal==18 and playerList.count('A')<=1 and (playerTotal-(11*playerList.count('A')))<=7 and (dealerTotal!=2 or dealerTotal!=7 or dealerTotal!=8):
+                elif playerTotal==18 and playerList.count('A')>=1 and (dealerTotal!=2 or dealerTotal!=7 or dealerTotal!=8): # and (playerTotal-(11*playerList.count('A')))<=7
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
                 elif playerTotal>=17 and playerTotal<=21:
