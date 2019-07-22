@@ -1,4 +1,15 @@
-# 
+# Blackjack Basic Strategy and Card Counting
+
+## Intro
+
+Want to practice memorizing blackjack basic strategy? Want to even out the casino's edge by counting cards? You've come to the right place! This python program will show you actual examples of blackjack hands with correct basic strategy used. 
+
+## Setup
+
+Fork and clone this repo.
+
+Inside the project folder, run `python3 blackjack.py`
+
 
 <!-- # March Madness Simulator
 

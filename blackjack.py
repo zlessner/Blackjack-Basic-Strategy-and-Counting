@@ -15,12 +15,12 @@ random.shuffle(stack)
 
 
 
-# while True:
-for i in range(100000):
+while True:
+# for i in range(100000):
 
-    # play = str(input("Would you like to play the blackjack hand? y/n "))
+    play = str(input("Would you like to play the blackjack hand? y/n "))
 
-    # if play == 'y' or play == 'Y':
+    if play == 'y' or play == 'Y':
 
         if bankRoll<=0:
             break
@@ -348,7 +348,7 @@ for i in range(100000):
                     dealer.append(stack.pop())
                     dealerTotal= dealerTotal + sum(dealer[-1].values())
                     if dealerTotal==21:
-                        print ("Dealer blackjack")
+                        print ("Dealer gets blackjack")
                         break
 
                     print ("Player surrenders")
@@ -387,7 +387,7 @@ for i in range(100000):
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
                         if dealerTotal==21:
-                            print ("Dealer blackjack")
+                            print ("Dealer gets blackjack")
                             break
                         print ("Player surrenders")
                         black=False
@@ -403,7 +403,7 @@ for i in range(100000):
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
                         if dealerTotal==21:
-                            print ("Dealer blackjack")
+                            print ("Dealer gets blackjack")
                             break
 
                         print ("Player surrenders")
@@ -1002,7 +1002,8 @@ for i in range(100000):
         for x in dealer:
             moo.append(list(x.keys()))
 
-        
+        print(f'Player starting hand: {oink[0]} {oink[1]}')
+        print(f'Dealer upcard: {moo[0]}')
         print(f'Player hand: {oink}')
         if black==True:
             print (f'Player total: {playerTotal}')
@@ -1010,7 +1011,6 @@ for i in range(100000):
             for x in player1:
                 playerTotal= playerTotal + sum(list(x.values())) 
             print (f'Player total: {playerTotal}')
-        print(f'Dealer upcard: {moo[0]}')
         if black==True:
             print(f'Dealer hand: {moo}')
             print (f'Dealer total: {dealerTotal}')
@@ -1049,9 +1049,9 @@ for i in range(100000):
             print("Entire deck has been shuffled")
 
     
-    # elif play == "N" or play =="n":
-    #     break
+    elif play == "N" or play =="n":
+        break
     
-    # else:
-    #     print("Please enter y/n")
+    else:
+        print("Please enter y/n")
 
