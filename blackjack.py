@@ -71,6 +71,7 @@ for i in range(100000):
         evenMore=True
         move=True
         gate=True
+        black=True
         open=False
         close=False
         open2=False
@@ -124,6 +125,7 @@ for i in range(100000):
             global open3
             global move
             global gate
+            global black
 
             
             while dealerTotal<17:
@@ -350,6 +352,7 @@ for i in range(100000):
                         break
 
                     print ("Player surrenders")
+                    black=False
                     bet = bet/2
                     playerTotal=0
                     break
@@ -387,6 +390,7 @@ for i in range(100000):
                             print ("Dealer blackjack")
                             break
                         print ("Player surrenders")
+                        black=False
                         bet = bet/2
                         playerTotal=0
                         break
@@ -403,6 +407,7 @@ for i in range(100000):
                             break
 
                         print ("Player surrenders")
+                        black=False
                         bet = bet/2
                         playerTotal=0
                         break
@@ -999,9 +1004,16 @@ for i in range(100000):
 
         
         print(f'Player hand: {oink}')
-        print (playerTotal)
-        print(f'Dealer hand: {moo}')
-        print (dealerTotal)
+        if black==True:
+            print (f'Player total: {playerTotal}')
+        else:
+            for x in player1:
+                playerTotal= playerTotal + sum(list(x.values())) 
+            print (f'Player total: {playerTotal}')
+        print(f'Dealer upcard: {moo[0]}')
+        if black==True:
+            print(f'Dealer hand: {moo}')
+            print (f'Dealer total: {dealerTotal}')
         print(f'New true count: {count}')
         print(f'Bankroll: ${bankRoll}')
         print ('\n' + "Next hand" + '\n')      
