@@ -32,6 +32,8 @@ When running this simulation, certain blackjack rules can be changed with the `r
 
 - Player has a starting bankroll of $50,000
 
+- Starting bet is $5
+
 # Instructions
 
 Run each hand and compare to basic strategy table to see why each decision is made. Keep note of the displayed running count, and notice at what point bets are increased.
