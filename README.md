@@ -36,7 +36,21 @@ When running this simulation, certain blackjack rules can be changed with the `r
 
 Run each hand and compare to basic strategy table to see why each decision is made. Keep note of the displayed running count, and notice at what point bets are increased.
 
-In order to simulate a large number of hands instead of individual hands, comment in `for i in range(100000):` and change the number to the desired amount of simulations. Then comment out the wording needed to play each individual hand, which includes at the beginning `# while True: <br /> # play = str(input("Would you like to play the blackjack hand? y/n ")) <br /> # if play == 'y' or play == 'Y':` and at the end `# elif play == "N" or play =="n": <br /> #     break <br /> # else: <br /> #     print("Please enter y/n")`
+In order to simulate a large number of hands instead of individual hands, comment in `for i in range(100000):` and change the number to the desired amount of simulations. Then comment out the wording needed to play each individual hand, which includes at the beginning
+
+ ```py
+while True:
+    play = str(input("Would you like to play the blackjack hand? y/n ")) 
+    if play == 'y' or play == 'Y':
+```
+and at the end
+
+```py
+elif play == "N" or play =="n":
+    break
+else:
+    print("Please enter y/n") 
+```
 
 
 

@@ -15,13 +15,13 @@ random.shuffle(stack)
 
 #Comment in for loop for simulation
 
-for i in range(100000):
+# for i in range(100000):
 
-# while True:
+while True:
 
-    # play = str(input("Would you like to play the blackjack hand? y/n "))
+    play = str(input("Would you like to play the blackjack hand? y/n "))
 
-    # if play == 'y' or play == 'Y':
+    if play == 'y' or play == 'Y':
 
 
 #Counting card rules
@@ -1071,9 +1071,9 @@ for i in range(100000):
     #comment in to play hand one at a time
 
     
-    # elif play == "N" or play =="n":
-    #     break
+    elif play == "N" or play =="n":
+        break
     
-    # else:
-    #     print("Please enter y/n")
+    else:
+        print("Please enter y/n")
 
