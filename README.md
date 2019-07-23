@@ -2,7 +2,7 @@
 
 ## Intro
 
-Want to practice memorizing blackjack basic strategy? Want to even out the casino edge by counting cards? You've come to the right place! This python program will show you actual examples of blackjack hands with correct basic strategy used. 
+Want to practice memorizing blackjack basic strategy? Want to even out the casino edge by counting cards? You've come to the right place! This Python program will show you actual examples of blackjack hands with correct basic strategy used. 
 
 ## Setup
 
