@@ -85,6 +85,7 @@ while True:
         aceList=[]
         aceList2=[]
         playerList=[]
+        aceList=[]
 
         
 
@@ -261,7 +262,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif playerList.count('A')==1 and (playerList.count('4')==1 or playerList.count('5')==1) and len(playerList)==2 and (dealerTotal!=4 and dealerTotal!=5 and dealerTotal!=6):
@@ -282,7 +283,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif playerList.count('A')==1 and playerList.count('6')==1 and len(playerList)==2 and (dealerTotal!=3 and dealerTotal!=4 and dealerTotal!=5 and dealerTotal!=6):
@@ -303,7 +304,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif playerList.count('A')==1 and playerList.count('7')==1 and len(playerList)==2 and (dealerTotal==2 or dealerTotal==7 or dealerTotal==8):
@@ -314,7 +315,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                     break
@@ -336,18 +337,33 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
-                elif playerTotal<=17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                    player1.append(stack.pop())
-                    playerTotal= playerTotal + sum(player1[-1].values())
-                    print ("woof")
 
-                elif playerTotal==18 and playerList.count('A')>=1 and (dealerTotal==9 or dealerTotal==10 or dealerTotal==11) and (len(playerList)<=4 or playerList.count('A')>=4):
+                #More Ace logic with more than two cards  
+                elif playerTotal==13 and playerList.count('A')>=1 and ((playerList.count('2')==1) or (playerList.count('A')==3)):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values()) 
+                elif playerTotal==14 and playerList.count('A')>=1 and ((playerList.count('A')==2 and playerList.count('2')==1) or (playerList.count('A')==4)):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())  
+                elif playerTotal==15 and playerList.count('A')>=1 and ((playerList.count('2')==2) or (playerList.count('A')==2 and playerList.count('3')==1) or (playerList.count('A')==3 and playerList.count('2')==1) or (playerList.count('A')==5)):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())         
+                elif playerTotal==16 and playerList.count('A')>=1 and ((playerList.count('2')==1 and playerList.count('3')==1) or (playerList.count('A')==2 and playerList.count('4')==1) or (playerList.count('A')==3 and playerList.count('3')==1) or (playerList.count('A')==4 and playerList.count('2')==1)):
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
-                    print("hi")
+                elif playerTotal==17 and playerList.count('A')>=1 and ((playerList.count('2')==1 and playerList.count('4')==1) or (playerList.count('3')==2) or (playerList.count('2')==3) or (playerList.count('A')==2 and playerList.count('5')==1) or (playerList.count('A')==3 and playerList.count('4')==1) or (playerList.count('A')==4 and playerList.count('3')==1) or (playerList.count('A')==5 and playerList.count('2')==1)):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+                elif playerTotal==18 and playerList.count('A')>=1 and (dealerTotal==9 or dealerTotal==10 or dealerTotal==11) and ((playerList.count('2')==1 and playerList.count('5')==1) or (playerList.count('3')==1 and playerList.count('4')==1) or (playerList.count('A')==2 and playerList.count('6')==1) or (playerList.count('A')==3 and playerList.count('5')==1) or (playerList.count('A')==4 and playerList.count('4')==1) or (playerList.count('A')==5 and playerList.count('3')==1)):
+                    player1.append(stack.pop())
+                    playerTotal= playerTotal + sum(player1[-1].values())
+
+
+#basic strategy without Aces
+
                 elif playerTotal==17 and dealerTotal==11 and len(player1)==2 and lateSurrender==True:
                     dealer.append(stack.pop())
                     dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -361,8 +377,6 @@ while True:
                     playerTotal=0
                     break
 
-
-#basic strategy without Aces
                 elif playerTotal>=17 and playerTotal<=21:
                     while dealerTotal<17:
                         dealer.append(stack.pop())
@@ -371,7 +385,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                     break
@@ -383,7 +397,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif (playerTotal==16 and (dealerTotal==7 or dealerTotal==8)):
@@ -436,7 +450,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif (playerTotal==12) and (dealerTotal==2 or dealerTotal==3 or dealerTotal==7 or dealerTotal==8 or dealerTotal==9 or dealerTotal==10 or dealerTotal==11):
@@ -447,6 +461,8 @@ while True:
                     print ("Bet doubled due to doubling down")
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
+                    if sum(player1[-1].values())==11:
+                        playerTotal=playerTotal-10
                     while dealerTotal<17:
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
@@ -454,7 +470,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif (playerTotal==11 and dealerTotal==11):
@@ -472,7 +488,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif (playerTotal==10) and (dealerTotal==10 or dealerTotal==11):
@@ -490,7 +506,7 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
                 elif (playerTotal==9) and (dealerTotal!=3 and dealerTotal!=4 and dealerTotal!=5 and dealerTotal!=6):
@@ -522,29 +538,6 @@ while True:
                                 # print (playerTotal)
                                 # print("woof woof") 
                             game=False
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
 
                             if move==True:
                                 move=False      
@@ -557,29 +550,6 @@ while True:
                             playerTotal=playerTotal-10
                             gate=False
                             goodbye=False
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
                             continue  
 
                         if aceList2.count('A')==3 and howdy==True:
@@ -588,29 +558,6 @@ while True:
                             howdy=False
                             if goodbye==True:
                                 open=True
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
                             continue
                     
                         if aceList2.count('A')==4 and yo==True:
@@ -619,29 +566,6 @@ while True:
                             gate=False
                             if goodbye==True or howdy==True:
                                 close=True
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
                             continue
 
                         if aceList2.count('A')==5 and evenMore==True:
@@ -650,116 +574,24 @@ while True:
                             evenMore=False
                             if goodbye==True or howdy==True or yo==True:
                                 open3=True
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
                             continue
                         
                         if open==True:
                             playerTotal=playerTotal-10
                             gate=False
                             open=False
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
                             continue
 
                         if close==True:
                             playerTotal=playerTotal-10
                             gate=False
                             close=False
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
                             continue
 
                         if open3==True:
                             playerTotal=playerTotal-10
                             gate=False
                             evenMore=False
-                            # if playerTotal==17 and playerList.count('A')>=1 and (len(playerList)<=3 or playerList.count('A')>=3):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
-
-                            # if playerTotal==18 and playerList.count('A')>=1 and (len(playerList)<=4 or playerList.count('A')>=4):
-                            #     while dealerTotal<17:
-                            #         dealer.append(stack.pop())
-                            #         dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            #         aceList=[]
-                            #         for x in dealer:
-                            #             for number in x:
-                            #                 aceList.append(number)
-                            #         if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
-                            #             dealer.append(stack.pop())
-                            #             dealerTotal= dealerTotal + sum(dealer[-1].values())
                             continue
 
                         else:
@@ -785,9 +617,10 @@ while True:
                     if (aceList.count('A')>=1):
                         if dealerGame==True:
                             dealerTotal=dealerTotal-10
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
+                                dealer.append(stack.pop())
+                                dealerTotal= dealerTotal + sum(dealer[-1].values())
                             # print("meow meow") 
-                            dealer.append(stack.pop())
-                            dealerTotal= dealerTotal + sum(dealer[-1].values())
                             
                             
                         dealerGame=False
@@ -800,10 +633,10 @@ while True:
                         for x in dealer:
                             for number in x:
                                 aceList.append(number)
-                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                        if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                             dealer.append(stack.pop())
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
-                if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                         dealer.append(stack.pop())
                         dealerTotal= dealerTotal + sum(dealer[-1].values())
                 if dealerTotal<=21 and dealerTotal>=17:            
@@ -825,7 +658,7 @@ while True:
                             for x in dealer:
                                 for number in x:
                                     aceList.append(number)
-                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                                 dealer.append(stack.pop())
                                 dealerTotal= dealerTotal + sum(dealer[-1].values())
                         continue
@@ -844,7 +677,7 @@ while True:
                             for x in dealer:
                                 for number in x:
                                     aceList.append(number)
-                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                                 dealer.append(stack.pop())
                                 dealerTotal= dealerTotal + sum(dealer[-1].values())
                         continue
@@ -863,7 +696,7 @@ while True:
                                 for number in x:
                                     aceList.append(number)
                             dealerTotal= dealerTotal + sum(dealer[-1].values())
-                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                                 dealer.append(stack.pop())
                                 dealerTotal= dealerTotal + sum(dealer[-1].values())
                         continue
@@ -882,7 +715,7 @@ while True:
                             for x in dealer:
                                 for number in x:
                                     aceList.append(number)
-                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                                 dealer.append(stack.pop())
                                 dealerTotal= dealerTotal + sum(dealer[-1].values())
                         continue
@@ -899,7 +732,7 @@ while True:
                             for x in dealer:
                                 for number in x:
                                     aceList.append(number)
-                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                                 dealer.append(stack.pop())
                                 dealerTotal= dealerTotal + sum(dealer[-1].values())
                         continue
@@ -916,7 +749,7 @@ while True:
                             for x in dealer:
                                 for number in x:
                                     aceList.append(number)
-                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                                 dealer.append(stack.pop())
                                 dealerTotal= dealerTotal + sum(dealer[-1].values())
                         continue
@@ -933,7 +766,7 @@ while True:
                             for x in dealer:
                                 for number in x:
                                     aceList.append(number)
-                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True:
+                            if aceList.count('A')>=1 and dealerTotal==17 and S17==True and ((aceList.count('2')==1 and aceList.count('4')==1) or (aceList.count('3')==2) or (aceList.count('2')==3) or (aceList.count('A')==2 and aceList.count('5')==1) or (aceList.count('A')==3 and aceList.count('4')==1) or (aceList.count('A')==4 and aceList.count('3')==1) or (aceList.count('A')==5 and aceList.count('2')==1)):
                                 dealer.append(stack.pop())
                                 dealerTotal= dealerTotal + sum(dealer[-1].values())
                         continue
