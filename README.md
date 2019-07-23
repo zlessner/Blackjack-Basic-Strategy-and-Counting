@@ -10,7 +10,7 @@ Fork and clone this repo.
 
 Inside the project folder, run `python3 blackjack.py`
 
-## Basic Strategy Table
+## Basic Strategy Table for Reference
 
 ![Basic Strategy Table](Basic_Table.png)
 
@@ -41,7 +41,7 @@ In order to simulate a large number of hands instead of individual hands, commen
  ```py
 while True:
     play = str(input("Would you like to play the blackjack hand? y/n ")) 
-    
+
     if play == 'y' or play == 'Y':
 ```
 and at the end
