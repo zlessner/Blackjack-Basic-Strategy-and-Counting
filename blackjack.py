@@ -11,16 +11,20 @@ cf = currentframe()
 random.shuffle(stack)
 
 
-#sudo code and readme
 
 
+#Comment in for loop for simulation
 
-while True:
-# for i in range(100000):
+for i in range(100000):
 
-    play = str(input("Would you like to play the blackjack hand? y/n "))
+# while True:
 
-    if play == 'y' or play == 'Y':
+    # play = str(input("Would you like to play the blackjack hand? y/n "))
+
+    # if play == 'y' or play == 'Y':
+
+
+#Counting card rules
 
         if bankRoll<=0:
             break
@@ -43,7 +47,7 @@ while True:
         else:
             bet=bet
 
-
+#Clear everything for each simulation
 
         player1=[]
 
@@ -72,6 +76,7 @@ while True:
         move=True
         gate=True
         black=True
+        natural=True
         open=False
         close=False
         open2=False
@@ -98,7 +103,7 @@ while True:
                     for worth in list(player1[z]):
                         player1[z][worth] = 11
 
-
+#run basic strategy function
         
         def basicStrag():
             global bet
@@ -126,8 +131,9 @@ while True:
             global move
             global gate
             global black
+            global natural
 
-            
+ #keep running until the dealer shows a hand higher than 17           
             while dealerTotal<17:
 
                 playerList=[]
@@ -151,6 +157,8 @@ while True:
                 
                 # print ("hola")
                 # print (otherTotal)
+
+                #splitting logic
 
                 if (sum(player1[0].values())==2 and sum(player1[1].values())==2) and (sum(dealer[0].values())<=7):
                     player1.pop()
@@ -230,6 +238,7 @@ while True:
                     print ("Bet doubled due to split")
                     continue
                 elif (sum(player1[0].values())==11 and sum(player1[1].values())==11):
+                    natural=False
                     player1.pop()
                     player1.append(stack.pop())
                     playerTotal=0
@@ -241,6 +250,7 @@ while True:
                     print ("Bet doubled due to split")
                     continue
 
+#basic strategy logic with Aces
                     
                 elif playerList.count('A')==1 and (playerList.count('2')==1 or playerList.count('3')==1) and len(playerList)==2 and (dealerTotal!=5 and dealerTotal!=6):
                     player1.append(stack.pop())
@@ -356,6 +366,9 @@ while True:
                     bet = bet/2
                     playerTotal=0
                     break
+
+
+#basic strategy without Aces
                 elif playerTotal>=17 and playerTotal<=21:
                     while dealerTotal<17:
                         dealer.append(stack.pop())
@@ -493,6 +506,7 @@ while True:
                     player1.append(stack.pop())
                     playerTotal= playerTotal + sum(player1[-1].values())
 
+#check to see if Ace is causing player total to go over 21, then make Aces worth 1 instead of 11
                 elif playerTotal>21:
                     aceList2=[]
                     for x in player1:
@@ -760,7 +774,7 @@ while True:
                 else:
                     break
 
-
+#check to see if Ace is causing dealer total to go over 21, then make Aces worth 1 instead of 11
             while dealerTotal>21:
                 aceList=[]
                 for x in dealer:
@@ -935,9 +949,9 @@ while True:
         basicStrag()
 
 
+#logic to show who wins hand
 
-
-        if (playerTotal==21 and dealerTotal!=21 and len(player1)==2):
+        if (playerTotal==21 and dealerTotal!=21 and len(player1)==2 and natural==True):
             if payoffGood==True:
                 bankRoll=bankRoll+(bet*1.5)
                 print("Player wins hand, blackjack pays off 3 to 2")
@@ -965,7 +979,7 @@ while True:
 
             
 
-        
+     #counting cards logic   
         
         cat=[]
         for x in player1:
@@ -1001,6 +1015,8 @@ while True:
         moo=[]
         for x in dealer:
             moo.append(list(x.keys()))
+
+        #show results to user    
 
         print(f'Player starting hand: {oink[0]} {oink[1]}')
         print(f'Dealer upcard: {moo[0]}')
@@ -1042,16 +1058,22 @@ while True:
         #     basicStrag()
 
 
-        if len(stack)<=208:
+#shuffle deck once it becomes half of original deck
+
+        if len(stack)<=((numDecks * len(deck))/2):
             stack= numDecks * deck
             random.shuffle(stack)
             count=0
             print("Entire deck has been shuffled")
 
+
+
+    #comment in to play hand one at a time
+
     
-    elif play == "N" or play =="n":
-        break
+    # elif play == "N" or play =="n":
+    #     break
     
-    else:
-        print("Please enter y/n")
+    # else:
+    #     print("Please enter y/n")
 
