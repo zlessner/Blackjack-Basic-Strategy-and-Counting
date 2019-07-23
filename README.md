@@ -41,6 +41,7 @@ In order to simulate a large number of hands instead of individual hands, commen
  ```py
 while True:
     play = str(input("Would you like to play the blackjack hand? y/n ")) 
+    
     if play == 'y' or play == 'Y':
 ```
 and at the end
